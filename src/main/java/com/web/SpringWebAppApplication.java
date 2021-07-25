@@ -2,14 +2,14 @@ package com.web;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplicat
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-        @Slf4j
+@Slf4j
 @SpringBootApplication
 public class SpringWebAppApplication {
-
-    log.info("Added logging mechanism")
+    
     public static void main(String[] args) {
+        log.info("Added Logging mechanism");
         SpringApplication.run(SpringWebAppApplication.class, args);
     }
 
