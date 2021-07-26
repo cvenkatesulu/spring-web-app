@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SpringWebAppApplication {
     
     public static void main(String[] args) {
-        log.info("Added Logging mechanism");
+        log.info("Spring Boot Application Started!!!");
         SpringApplication.run(SpringWebAppApplication.class, args);
     }
 
