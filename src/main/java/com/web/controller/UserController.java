@@ -3,17 +3,14 @@ package com.web.controller;
 import com.web.dto.User;
 import com.web.dto.UserResponse;
 import com.web.service.UserService;
-import com.web.service.UserServiceimpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/v1")
 public class UserController {
 
     private final UserService userService;
@@ -23,14 +20,30 @@ public class UserController {
     }
 
     @PostMapping("/addUser")
-    public ResponseEntity<UserResponse> addUser(@RequestBody User user){
+    public ResponseEntity<UserResponse> addUser(@RequestBody User user) {
         UserResponse userResponse = userService.saveUser(user);
         return ResponseEntity.status(HttpStatus.CREATED).body(userResponse);
     }
 
     @GetMapping("/usersList")
-    public List<User> getAllUsers(){
+    public List<User> getAllUsers() {
         return userService.listAllUser();
     }
+
+    @PutMapping("/updateUser")
+    public UserResponse updateUsers(@RequestBody User user) {
+        return userService.updateUser(user);
+    }
+
+    @GetMapping("/findByUser/{id}")
+    public User findByUsersId(@PathVariable Integer id) {
+        return userService.findByUserId(id);
+    }
+
+    @DeleteMapping("/userDelete/{id}")
+    public UserResponse deleteUserById(@PathVariable Integer id) {
+        return userService.deleteByUserId(id);
+    }
+
 
 }
